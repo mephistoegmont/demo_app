@@ -1,7 +1,14 @@
 DemoApp::Application.routes.draw do
+  get "static_pages/home"
+  root :to => 'static_pages#home'
+  match '/help', to: 'static_pages#help'
+  match '/about', to: 'static_pages#about'
+  match '/contact', to: 'static_pages#contact'
+
   resources :microposts
 
   resources :users
+  match '/signup',  to: 'users#new'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -52,7 +59,7 @@ DemoApp::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
+
 
   # See how all your routes lay out with "rake routes"
 
